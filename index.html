@@ -2,106 +2,158 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Para Meu Amor ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para o Amor da Minha Vida</title>
   <style>
     body {
-      background-color: #0d0d0d;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+      font-family: "Arial", sans-serif;
       overflow: hidden;
     }
 
-    img {
-      width: 300px;
-      border-radius: 20px;
-      margin: 20px 0;
-      box-shadow: 0 0 15px #ff4d6d;
-    }
-
-    .timer {
-      font-size: 1.3em;
-      margin-top: 10px;
-    }
-
-    .message {
-      max-width: 600px;
-      margin: 30px auto;
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
-
-    audio {
-      margin-top: 20px;
-    }
-
-    .heart {
+    .entrada {
       position: fixed;
-      top: -10px;
-      font-size: 20px;
-      color: #ff4d6d;
-      animation: fall linear infinite;
-      pointer-events: none;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #0d0d0d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
     }
 
-    @keyframes fall {
-      to {
-        transform: translateY(100vh);
-        opacity: 0;
+    .entrada button {
+      font-size: 26px;
+      padding: 18px 36px;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    #conteudo {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .foto-casal {
+      max-width: 300px;
+      margin-top: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .frase {
+      font-size: 22px;
+      margin-top: 25px;
+      color: #333;
+    }
+
+    .player {
+      margin-top: 35px;
+      background: #121212;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      padding: 16px;
+      color: white;
+      font-family: sans-serif;
+      gap: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .player img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+    }
+
+    .player-info {
+      text-align: left;
+    }
+
+    .player-info h4 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .player-info p {
+      margin: 0;
+      font-size: 14px;
+      color: #b3b3b3;
+    }
+
+    .coracao {
+      position: fixed;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://i.imgur.com/Qp1ZfGf.png');
+      background-size: cover;
+      animation: cair 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes cair {
+      0% {
+        transform: translateY(-50px);
+      }
+      100% {
+        transform: translateY(110vh);
       }
     }
   </style>
 </head>
 <body>
-  <h1>❤️ Eu te amo há:</h1>
-  <img src="foto-casal.jpg" alt="Foto do casal">
 
-  <div class="timer" id="timer"></div>
+<div class="entrada" id="entrada">
+  <button onclick="entrar()">Entrar</button>
+</div>
 
-  <audio controls autoplay loop>
-    <source src="musica.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio :(
-  </audio>
-
-  <div class="message">
-    A cada dia que passa, meu coração se enche mais de carinho e admiração por você. 
-    Cada sorriso seu ilumina o meu mundo, e cada abraço me faz sentir que estou exatamente 
-    onde deveria estar. Você é a razão dos meus melhores pensamentos, e tudo ao seu lado 
-    se torna mais bonito e significativo. Eu te amo para sempre. ❤️
+<div id="conteudo">
+  <img src="casal.jpg" class="foto-casal" alt="Foto do Casal"/>
+  <div class="frase">
+    Oi meu amor, só queria que você nunca esquecesse o tanto que eu te amo,<br>
+    o quanto sou mais feliz ao seu lado, e que eu quero te amar por toda a minha vida.<br>
+    Um beijão, minha pereguicinha 💕
   </div>
 
-  <script>
-    const startDate = new Date("2024-01-10T00:00:00");
+  <div class="player">
+    <img src="https://i.imgur.com/Xv9sYwW.png" alt="Capa da Música"/>
+    <div class="player-info">
+      <h4>Um Dia Te Levo Comigo</h4>
+      <p>Jorge & Mateus</p>
+      <audio controls style="width: 220px; margin-top: 8px;">
+        <source src="musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+      </audio>
+    </div>
+  </div>
+</div>
 
-    function updateTimer() {
-      const now = new Date();
-      const diff = now - startDate;
+<script>
+  function entrar() {
+    document.getElementById('entrada').style.display = 'none';
+    document.getElementById('conteudo').style.display = 'block';
+  }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+  // Animação de corações caindo
+  function criarCoracao() {
+    const coracao = document.createElement("div");
+    coracao.classList.add("coracao");
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(coracao);
+    setTimeout(() => coracao.remove(), 5000);
+  }
 
-      document.getElementById("timer").textContent = 
-        `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
-    }
+  setInterval(criarCoracao, 400);
+</script>
 
-    setInterval(updateTimer, 1000);
-    updateTimer();
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-      heart.innerHTML = "❤️";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
-    }
-
-    setInterval(createHeart, 300);
-  </script>
 </body>
 </html>
