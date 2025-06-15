@@ -7,9 +7,9 @@
   <style>
     body {
       margin: 0;
-      background-color: #000;
+      background-color: #FFF0F5;
       font-family: Arial, sans-serif;
-      color: white;
+      color: black;
       text-align: center;
     }
 
@@ -23,16 +23,16 @@
     .entrar-btn {
       font-size: 32px;
       padding: 20px 40px;
-      background-color: #1DB954;
+      background-color: #EE82EE;
       color: white;
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.9s;
     }
 
     .entrar-btn:hover {
-      background-color: #1ed760;
+      background-color: #EE82EE;
     }
 
     .conteudo {
@@ -44,9 +44,9 @@
 
     .foto-casal {
       width: 90%;
-      max-width: 400px;
+      max-width: 320px;
       border-radius: 20px;
-      box-shadow: 0 0 15px #1db954;
+      box-shadow: 0 0 15px #EE82EE;
     }
 
     .frase {
@@ -138,7 +138,8 @@
         const coracao = document.createElement("div");
         coracao.className = "coracao";
         coracao.style.left = Math.random() * 100 + "vw";
-        coracao.innerHTML = "❤️";
+        coracao.innerHTML = "💜";
+    
         coracao.style.fontSize = (Math.random() * 20 + 20) + "px";
         container.appendChild(coracao);
         setTimeout(() => coracao.remove(), 5000);
