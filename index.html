@@ -1,159 +1,149 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Para o Amor da Minha Vida</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Meu Amor</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #ffe6f0, #ffffff);
-      font-family: "Arial", sans-serif;
-      overflow: hidden;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
     }
 
-    .entrada {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #0d0d0d;
+    .entrar-container {
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 9999;
     }
 
-    .entrada button {
-      font-size: 26px;
-      padding: 18px 36px;
-      border: none;
-      background: #ff4d6d;
+    .entrar-btn {
+      font-size: 32px;
+      padding: 20px 40px;
+      background-color: #1DB954;
       color: white;
-      border-radius: 12px;
+      border: none;
+      border-radius: 50px;
       cursor: pointer;
+      transition: 0.3s;
     }
 
-    #conteudo {
+    .entrar-btn:hover {
+      background-color: #1ed760;
+    }
+
+    .conteudo {
       display: none;
-      text-align: center;
-      padding: 20px;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
     }
 
     .foto-casal {
-      max-width: 300px;
-      margin-top: 30px;
+      width: 90%;
+      max-width: 400px;
       border-radius: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      box-shadow: 0 0 15px #1db954;
     }
 
     .frase {
-      font-size: 22px;
-      margin-top: 25px;
-      color: #333;
+      margin-top: 20px;
+      font-size: 20px;
+      line-height: 1.6;
     }
 
     .player {
-      margin-top: 35px;
-      background: #121212;
-      border-radius: 20px;
-      display: inline-flex;
-      align-items: center;
-      padding: 16px;
-      color: white;
-      font-family: sans-serif;
-      gap: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin-top: 30px;
+      background-color: #121212;
+      border-radius: 16px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 
-    .player img {
-      width: 80px;
-      height: 80px;
-      border-radius: 10px;
+    .player audio {
+      width: 100%;
+      outline: none;
     }
 
-    .player-info {
-      text-align: left;
-    }
-
-    .player-info h4 {
-      margin: 0;
-      font-size: 18px;
-    }
-
-    .player-info p {
-      margin: 0;
-      font-size: 14px;
-      color: #b3b3b3;
+    .coracoes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
     }
 
     .coracao {
-      position: fixed;
-      top: -50px;
-      width: 30px;
-      height: 30px;
-      background-image: url('https://i.imgur.com/Qp1ZfGf.png');
-      background-size: cover;
+      position: absolute;
+      color: pink;
       animation: cair 5s linear infinite;
-      opacity: 0.8;
+      font-size: 24px;
     }
 
     @keyframes cair {
       0% {
-        transform: translateY(-50px);
+        transform: translateY(-10%);
+        opacity: 1;
       }
       100% {
         transform: translateY(110vh);
+        opacity: 0;
       }
     }
   </style>
 </head>
 <body>
-
-<div class="entrada" id="entrada">
-  <button onclick="entrar()">Entrar</button>
-</div>
-
-<div id="conteudo">
-  <img src="casal.jpg" class="foto-casal" alt="Foto do Casal"/>
-  <div class="frase">
-    Oi meu amor, só queria que você nunca esquecesse o tanto que eu te amo,<br>
-    o quanto sou mais feliz ao seu lado, e que eu quero te amar por toda a minha vida.<br>
-    Um beijão, minha pereguicinha 💕
+  <div class="entrar-container" id="tela-inicial">
+    <button class="entrar-btn" onclick="mostrarConteudo()">Entrar</button>
   </div>
 
-  <div class="player">
-    <img src="https://i.imgur.com/Xv9sYwW.png" alt="Capa da Música"/>
-    <div class="player-info">
-      <h4>Um Dia Te Levo Comigo</h4>
-      <p>Jorge & Mateus</p>
-      <audio controls style="width: 220px; margin-top: 8px;">
-        <source src="musica.mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio.
+  <div class="conteudo" id="conteudo">
+    <div class="coracoes" id="coracoes"></div>
+
+    <img class="foto-casal" src="casal.jpg" alt="Foto do Casal">
+    <div class="frase">
+      Oi meu amor, só queria que você nunca esquecesse o tanto que eu te amo,<br>
+      o quanto sou mais feliz ao seu lado,<br>
+      e que eu quero te amar por toda a minha vida.<br>
+      Um beijão, minha pereguicinha 💕
+    </div>
+
+    <div class="player">
+      <strong>Um Dia Te Levo Comigo</strong><br>
+      Jorge & Mateus<br>
+      <audio controls>
+        <source src="musica.mp3" type="audio/mp3">
+        Seu navegador não suporta o player de áudio.
       </audio>
     </div>
   </div>
-</div>
 
-<script>
-  function entrar() {
-    document.getElementById('entrada').style.display = 'none';
-    document.getElementById('conteudo').style.display = 'block';
-  }
+  <script>
+    function mostrarConteudo() {
+      document.getElementById("tela-inicial").style.display = "none";
+      document.getElementById("conteudo").style.display = "flex";
+      iniciarCoracoes();
+    }
 
-  // Animação de corações caindo
-  function criarCoracao() {
-    const coracao = document.createElement("div");
-    coracao.classList.add("coracao");
-    coracao.style.left = Math.random() * 100 + "vw";
-    coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
-    document.body.appendChild(coracao);
-    setTimeout(() => coracao.remove(), 5000);
-  }
-
-  setInterval(criarCoracao, 400);
-</script>
-
+    function iniciarCoracoes() {
+      const container = document.getElementById("coracoes");
+      setInterval(() => {
+        const coracao = document.createElement("div");
+        coracao.className = "coracao";
+        coracao.style.left = Math.random() * 100 + "vw";
+        coracao.innerHTML = "❤️";
+        coracao.style.fontSize = (Math.random() * 20 + 20) + "px";
+        container.appendChild(coracao);
+        setTimeout(() => coracao.remove(), 5000);
+      }, 300);
+    }
+  </script>
 </body>
 </html>
